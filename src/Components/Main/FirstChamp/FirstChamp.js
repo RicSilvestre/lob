@@ -1,6 +1,6 @@
 import React from 'react'
 import Builds from './Builds/Builds'
-import ChampSelect from './ChampSelect/ChampSelect'
+import ChampPic from './ChampPic/ChampPic'
 import Runes from './Runes/Runes'
 import Skills from './Skills/Skills'
 import Stats from './Stats/Stats'
@@ -8,7 +8,7 @@ import Stats from './Stats/Stats'
 const FirstChamp = () => {
     return (
         <div>
-            <ChampSelect/>
+            <ChampPic/>
             <Runes/>
             <Builds/>
             <Stats/>           
