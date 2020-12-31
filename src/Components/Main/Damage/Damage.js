@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 const Damage = () => {
     const sufix = ['aa', 'passive', 'Q', 'W', 'E', 'R']
     return (

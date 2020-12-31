@@ -1,24 +1,14 @@
 import React from 'react'
 
 const Skills = () => {
+    const sufix = ["Q", "W", "E", "R"]
     return (
         <div>
-            <div className="skill">
-                <img src="" alt="" id="img-skill-Q"/>
+            {sufix.map((letter) => {
+            return (<div key={letter} className="skill">
+                <img src="" alt="" id={`img-skill-${letter}`}/>
                 <select name="nivel-Q" id="nivel-Q"></select>
-            </div>                
-            <div className="skill">
-                <img src="" alt="" id="img-skill-W"/>
-                <select name="nivel-W" id="nivel-W"></select>
-            </div>
-            <div className="skill">
-                <img src="" alt="" id="img-skill-E"/>
-                <select name="nivel-E" id="nivel-E"></select>
-            </div>
-            <div className="skill">
-                <img src="" alt="" id="img-skill-R"/>
-                <select name="nivel-R" id="nivel-R"></select>
-            </div>
+            </div>)})}
         </div>
     )
 }

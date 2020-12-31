@@ -7,10 +7,10 @@ import FirstChamp from './FirstChamp/FirstChamp'
 const Main = () => {
     return (
         <div>
-            <ChampSelect/>
-            <FirstChamp/>
-            <EnemyChamp/>
-            <Damage/>            
+            
+            
+            
+            
         </div>
     )
 }
