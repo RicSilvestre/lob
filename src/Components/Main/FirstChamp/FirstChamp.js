@@ -5,10 +5,11 @@ import Runes from './Runes/Runes'
 import Skills from './Skills/Skills'
 import Stats from './Stats/Stats'
 
-const FirstChamp = () => {
+const FirstChamp = ({escolhido}) => {
+
     return (
         <div>
-            <ChampPic/>
+            <ChampPic escolhido={escolhido}/>
             <Runes/>
             <Builds/>
             <Stats/>           

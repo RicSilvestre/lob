@@ -5,10 +5,16 @@ import EnemyChamp from './EnemyChamp/EnemyChamp'
 import FirstChamp from './FirstChamp/FirstChamp'
 
 const Main = () => {
+    const [escolhido, setEscolhido] = React.useState('');
+
+    function handleChoice(chosen) {
+        setEscolhido(chosen)
+    }
+
     return (
         <div>
-            <ChampSelect/>
-            <FirstChamp/>
+            <ChampSelect onChangeChamp={handleChoice}/>
+            <FirstChamp escolhido={escolhido}/>
             <EnemyChamp/>
             <Damage/>            
         </div>
