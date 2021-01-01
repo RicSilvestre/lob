@@ -13,7 +13,7 @@ const FirstChamp = ({escolhido}) => {
             <Runes/>
             <Builds/>
             <Stats/>           
-            <Skills/>
+            <Skills escolhido={escolhido}/>
         </div>
     )
 }
