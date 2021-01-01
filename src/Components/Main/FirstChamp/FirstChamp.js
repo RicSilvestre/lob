@@ -5,7 +5,7 @@ import Runes from './Runes/Runes'
 import Skills from './Skills/Skills'
 import Stats from './Stats/Stats'
 
-const FirstChamp = ({escolhido}) => {
+const FirstChamp = ({escolhido, spellRanks, spells, onChangeLvl}) => {
 
     return (
         <div>
@@ -13,7 +13,7 @@ const FirstChamp = ({escolhido}) => {
             <Runes/>
             <Builds/>
             <Stats/>           
-            <Skills escolhido={escolhido}/>
+            <Skills spellRanks={spellRanks} spells={spells} onChangeLvl={onChangeLvl}/>
         </div>
     )
 }
