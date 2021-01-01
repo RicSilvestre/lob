@@ -16,7 +16,7 @@ const Main = () => {
             <ChampSelect onChangeChamp={handleChoice}/>
             <FirstChamp escolhido={escolhido}/>
             <EnemyChamp/>
-            <Damage/>            
+            <Damage escolhido={escolhido}/>            
         </div>
     )
 }

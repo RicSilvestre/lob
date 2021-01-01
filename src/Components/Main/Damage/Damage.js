@@ -1,6 +1,19 @@
 import React from 'react'
 
-const Damage = () => {
+const Damage = ({escolhido}) => {
+    const [skillsDMG, setsSkillsDMG] = React.useState([]);
+
+    React.useEffect(() => {
+        async function getSkillsDMG() {
+            const url = '../../../Database/skills.json';
+            console.log(url);
+            const response = await fetch(url);
+            const result = await response.json();
+            console.log(response);
+        }
+        getSkillsDMG();
+    }, [escolhido])
+
     const sufix = ['aa', 'passive', 'Q', 'W', 'E', 'R']
     return (
         <div>
