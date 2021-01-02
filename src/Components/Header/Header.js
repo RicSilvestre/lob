@@ -1,10 +1,11 @@
-import React from 'react'
+import React from 'react';
+import styles from './Header.module.css'
 
 const Header = () => {
     return (
-        <div>
+        <header className={styles.header} >
           <h1>League of Builds</h1>  
-        </div>
+        </header>
     )
 }
 

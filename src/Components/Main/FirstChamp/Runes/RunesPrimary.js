@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import styles from './Runes.module.css'
 
 const RunesPrimary = (props) => {
     const [chosenRune, setChosenRune] = React.useState('')
@@ -13,7 +14,7 @@ const RunesPrimary = (props) => {
     }, [chosenRune, props])
     
     return (
-        <div>
+        <div className={styles.runasP}>
             <select onChange={(e) => {
                 setChosenRune(e.target.value)
             }} name="r-primary" id="r-primary">

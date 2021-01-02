@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import styles from './Builds.module.css';
 
 const Builds = () => {
     const [items, setItems] = React.useState([]);
@@ -27,12 +28,14 @@ const Builds = () => {
     }
 
     return (
-        <div>
+        <>
             <h2>Itens</h2>
-            {builds.map((build => <select key={build} name={`build-${build}`} id={`build-${build}`}>
-                {items.map((item, index) => <option key={index} value={item}>{item}</option>)}
-            </select>))}
-        </div>
+            <div className={styles.builds}>                
+                {builds.map((build => <select key={build} name={`build-${build}`} id={`build-${build}`}>
+                    {items.map((item, index) => <option key={index} value={item}>{item}</option>)}
+                </select>))}
+            </div>
+        </>
     )
 }
 

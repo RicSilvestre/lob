@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import styles from './Damage.module.css'
 
 const Damage = ({escolhido, spellNames, passive, currLvls2, valueDmg}) => {
     const [skillsDMG, setSkillsDMG] = React.useState([]);
@@ -24,51 +25,51 @@ const Damage = ({escolhido, spellNames, passive, currLvls2, valueDmg}) => {
     }, [escolhido, currLvls2]);
 
     React.useEffect(() => {
+        let dmgs = [];
 
         const skillMapped = skillsDMG.map((skill, index) => {
         let dmgQ = 0;
         let dmgW = 0;
         let dmgE = 0;
         let dmgR = 0;
-        let dmgs = [];
 
-        console.log(currLvls2)
-
-        if (index === 0) {
+        if (index === 0 && skill[0] !== undefined) {
             dmgQ = skill[0][currLvls2[0]];
-            dmgs[0] = dmgQ
+            dmgs[0] = Number(dmgQ);
         }
-        else if (index === 1) {
+        else if (index === 1 && skill[0] !== undefined) {
             dmgW = skill[0][currLvls2[1]];
-            dmgs[1] = dmgW;
+            dmgs[1] = Number(dmgW);
         }
-        else if (index === 2) {
+        else if (index === 2 && skill[0] !== undefined) {
             dmgE = skill[0][currLvls2[2]];
-            dmgs[2] = dmgE;
+            dmgs[2] = Number(dmgE);
         }
-        else if (index === 3) {
+        else if (index === 3 && skill[0] !== undefined) {
             dmgR = skill[0][currLvls2[3]];
-            dmgs[3] = dmgR;
+            dmgs[3] = Number(dmgR);
         }
         return dmgs;
         })
 
-        setDmgs(skillMapped)
-        
-    }, [currLvls2, skillsDMG, valueDmg])
+        if (escolhido !== "") setDmgs(skillMapped[0]);
+            
+    }, [currLvls2, skillsDMG, valueDmg, escolhido])
 
     const sufix = ['aa', 'passive', 'Q', 'W', 'E', 'R']
     return (
-        <div>
-            <div className="dmg-name-row">
+        <div className={styles.dmgRows}>
+            <div className={styles.dmgRow}>
                 <p>Dano/Fonte</p>
                 <p>Auto-Ataque</p>
                 <p id="skill-passive">{passive}</p>
-                {spellNames.map((spell) => <p key={spell}>{spell}</p>)}
+                {escolhido ? spellNames.map((spell) => <p key={spell}>{spell}</p>) : " "}
             </div>
-            <div className="dmg-name-row">
+            <div className={styles.dmgRow}>
                 <p>Dano Base</p>
-                {(escolhido !== "") && dmgs.map((dmg, index) => <p key={index}>{dmg[index]}</p>)}
+                <p>AA</p>
+                <p>P</p>
+                {dmgs && dmgs.map((dmg, index) => <p key={index}>{dmg}</p>)}
             </div>
             <div className="dmg-hidden-row" hidden>
                 <p>Dano Lich</p>
@@ -86,13 +87,13 @@ const Damage = ({escolhido, spellNames, passive, currLvls2, valueDmg}) => {
                 <p>Dano runas *</p>
                 {sufix.map((dmg) => <p key={dmg} id={`rune-${dmg}`}>{dmg}</p>)}
             </div>
-            <div className="dmg-name-row">
+            <div className={styles.dmgRow}>
                 <p>Dano total skill</p>
-                {sufix.map((dmg) => <p key={dmg} id={`total-skill-${dmg}`}>{dmg}</p>)}
+                {sufix.map((dmg) => <p key={dmg} id={`total-skill-${dmg}`}></p>)}
             </div>
-            <div className="dmg-name-row">
+            <div className={styles.dmgRow}>
                 <p>Dano total combo</p>
-                <p id="total-dmg"></p>
+                
             </div>
             <div className="dmg-hidden-row" hidden>
                 <p>Dano sobre tempo restante</p>

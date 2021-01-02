@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import styles from './Skills.module.css'
 
 const Skills = ({spellRanks, spells, onChangeLvl}) => {
     const [currLvls, setCurrLvls] = React.useState([0, 0, 0, 0]);
@@ -20,7 +21,7 @@ const Skills = ({spellRanks, spells, onChangeLvl}) => {
     }, [currLvls, onChangeLvl, value])
     
     return (
-        <div>
+        <div className={styles.skillSet}>
             {spells.map((spell, index) => {
                 let levels = [];
                 switch(index) {
@@ -39,7 +40,7 @@ const Skills = ({spellRanks, spells, onChangeLvl}) => {
                     default:
                 }
             return (
-            <div key={index} className="skill">
+            <div key={index} className={styles.skill}>
                 <img src={`http://ddragon.leagueoflegends.com/cdn/10.22.1/img/spell/${spell.image.full}`} alt=""/>
                 <select id={index} onChange={handleChangeLvl}>
                     {levels && levels.map((rank, index) => <option key={index} value={rank}>{rank}</option>)}

@@ -1,8 +1,9 @@
-import React from 'react'
-import ChampSelect from './ChampSelect/ChampSelect'
-import Damage from './Damage/Damage'
-import EnemyChamp from './EnemyChamp/EnemyChamp'
-import FirstChamp from './FirstChamp/FirstChamp'
+import React from 'react';
+import ChampSelect from './ChampSelect/ChampSelect';
+import Damage from './Damage/Damage';
+import EnemyChamp from './EnemyChamp/EnemyChamp';
+import FirstChamp from './FirstChamp/FirstChamp';
+import styles from './Main.module.css';
 
 const Main = () => {
     const [escolhido, setEscolhido] = React.useState('');
@@ -79,12 +80,12 @@ const Main = () => {
     }
 
     return (
-        <div>
+        <main className={styles.main}>
             <ChampSelect onChangeChamp={handleChoice}/>
             <FirstChamp escolhido={escolhido} spellRanks={spellRanks} spells={spells} onChangeLvl={onChangeLvl}/>
             <EnemyChamp/>
             <Damage escolhido={escolhido} spellNames={spellNames} currLvls2={currLvls2} passive={passive} valueDmg={value2}/>            
-        </div>
+        </main>
     )
 }
 

@@ -1,0 +1,14 @@
+.runas {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.runasP, .runasS {
+    margin: 1rem 0;
+}
+
+.runasP select, .runasS select {
+    margin: 0 .5rem;
+}

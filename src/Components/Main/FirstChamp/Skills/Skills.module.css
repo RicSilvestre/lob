@@ -1,0 +1,14 @@
+.skill {
+    display: flex;
+    flex-direction: column;
+}
+
+.skill select {
+    margin-top: -2rem;
+}
+
+.skillSet {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 3rem;
+}

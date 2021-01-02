@@ -1,0 +1,15 @@
+.footer {
+    background: #153d52;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    margin-top: minmax(80vh, 100rem);
+}
+
+.footer span {
+    padding: 0 1rem;
+    color: wheat;
+    font-size: .75rem;
+}

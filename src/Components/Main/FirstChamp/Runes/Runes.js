@@ -1,6 +1,7 @@
 import React from 'react';
 import RunesPrimary from './RunesPrimary';
 import RunesSecondary from './RunesSecondary';
+import styles from './Runes.module.css';
 
 const Runes = () => {
     const [runes, setRunes] = React.useState([]);
@@ -188,7 +189,7 @@ const Runes = () => {
     }
 
     return (
-        <div>
+        <div className={styles.runas}>
             <h2>Runas</h2>
             <RunesPrimary runes={runes} onChangeRune={handleRune} rTFirst={rTFirst} rTSecond={rTSecond} rTThird={rTThird} rTFourth={rTFourth}/>
             <RunesSecondary runes={runes} pRune={pRune} minorRunes={minorRunes} onChangeSRune={handleSRune} onChangeFM={handleFM} onChangeSM={handleSM} SMRSubtr={SMRSubtr} FMRSubtr={FMRSubtr}/>

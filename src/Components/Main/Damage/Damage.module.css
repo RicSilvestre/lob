@@ -1,0 +1,13 @@
+.dmgRows {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-width: 97vw;
+    margin-bottom: 1.5rem;
+}
+
+.dmgRow {
+    display: grid;
+    grid-template-columns: auto 1fr 1fr 1fr 1fr 1fr 1fr;
+    margin: .3rem 2rem;
+}

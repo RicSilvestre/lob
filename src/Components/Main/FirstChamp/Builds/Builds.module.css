@@ -1,0 +1,10 @@
+.builds {
+    display: flex;
+    justify-content: space-around;
+}
+
+.builds select {
+    width: 15%;
+    margin: 1rem 0;
+}
+

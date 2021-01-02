@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import styles from './Runes.module.css';
 
 const RunesSecondary = ({runes, pRune, minorRunes, onChangeSRune, onChangeSM, onChangeFM, FMRSubtr, SMRSubtr}) => {
     const [fChoice, setFChoice] = React.useState('');
@@ -18,7 +19,7 @@ const RunesSecondary = ({runes, pRune, minorRunes, onChangeSRune, onChangeSM, on
     }, [onChangeSM, sChoice])
 
     return (
-        <div>
+        <div className={styles.runasS}>
             <select onChange={(e) => setchosenSRune(e.target.value) } name="r-secondary" id="r-secondary">
                 <option value="">Escolha uma</option>
                 {runes.map((rune) => rune !== pRune && <option key={rune} value={rune}>{rune}</option>)}

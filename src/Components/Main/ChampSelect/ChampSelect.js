@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import styles from './ChampSelect.module.css';
 
 const ChampSelect = (props) => {
     const [champList, setChampList] = React.useState([]);
@@ -28,7 +29,7 @@ const ChampSelect = (props) => {
     }, [chosen, props])
 
     return (
-        <div>
+        <div className={styles.sel}>
             <select id="champions" name="champions" onChange={(e) => setChosen(e.target.value)}>
                 <option value="">Escolha seu campeão</option>
                 {champList.map((champ) => <option key={champ} value={champ}>{champ}</option>)}
