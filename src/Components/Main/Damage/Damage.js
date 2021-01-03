@@ -10,14 +10,43 @@ const Damage = ({escolhido, spellNames, passive, currLvls2, valueDmg}) => {
             const url = 'https://raw.githubusercontent.com/RicSilvestre/lob/master/src/Database/skills.json';
             const response = await fetch(url);
             const result = await response.json();
-            let skillDmg = []
+            let skillDmg = [];
+            let dmgTypes = [];
+            let consDmg = [];
             
             for (const i of result) {
                 if (Object.keys(i)[0] === escolhido) {
-                    skillDmg = i[escolhido].dmg;                    
+                    skillDmg = i[escolhido].dmg;
+                    dmgTypes = i[escolhido].dmgType;
+                    
+                    for (const i in dmgTypes) {
+                        if (typeof(dmgTypes[i]) === Array) {
+                            const innerArray = dmgTypes[i];
+                            for (const ix in innerArray) {
+                                if (innerArray[ix].includes("Damage")) {                                    
+                                    consDmg.push(innerArray[ix]);
+                                    
+                                }
+                            }
+                        } else {
+                            for (const inx in dmgTypes[i]) {
+                                
+                                if ((dmgTypes[i][inx].includes("Damage")) || (dmgTypes[i][inx].includes("damage"))) {
+                                    if (dmgTypes[i][inx].includes("Total") || dmgTypes[i][inx].includes("Enhanced") || dmgTypes[i][inx].includes("Maximum")) {
+                                    consDmg.push(dmgTypes[i][inx]);
+                                    skillDmg[i][0] = skillDmg[i][inx];
+                                    
+                                    }
+                                } 
+
+                            }
+                                
+                            
+                        }
+                    }
                 }
             }
-
+            console.log(skillDmg)
             setSkillsDMG(skillDmg);            
         }
         if (escolhido !== "") getSkillsDMG();
