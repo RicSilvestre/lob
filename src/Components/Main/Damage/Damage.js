@@ -13,11 +13,15 @@ const Damage = ({escolhido, spellNames, passive, currLvls2, valueDmg}) => {
             let skillDmg = [];
             let dmgTypes = [];
             let consDmg = [];
+            let mockSD = [0];
+            
             
             for (const i of result) {
                 if (Object.keys(i)[0] === escolhido) {
                     skillDmg = i[escolhido].dmg;
                     dmgTypes = i[escolhido].dmgType;
+                    
+                    
                     
                     for (const i in dmgTypes) {
                         if (typeof(dmgTypes[i]) === Array) {
@@ -30,14 +34,43 @@ const Damage = ({escolhido, spellNames, passive, currLvls2, valueDmg}) => {
                             }
                         } else {
                             for (const inx in dmgTypes[i]) {
-                                
-                                if ((dmgTypes[i][inx].includes("Damage")) || (dmgTypes[i][inx].includes("damage"))) {
-                                    if (dmgTypes[i][inx].includes("Total") || dmgTypes[i][inx].includes("Enhanced") || dmgTypes[i][inx].includes("Maximum")) {
-                                    consDmg.push(dmgTypes[i][inx]);
-                                    skillDmg[i][0] = skillDmg[i][inx];
+                                let dmgCheck = [];
+                                                                
+                                if (/damage|Damage/.test(dmgTypes[i][inx])) {
+                                    dmgCheck.push("DTrue");
                                     
+                                    
+                                    if (/Total|Maximum|Enhanced|Empowered/.test(dmgTypes[i][inx])) {
+                                        
+                                        skillDmg[i][0] = skillDmg[i][inx];
+                                        dmgCheck.push("DTrue");
+                                        break;
+
+                                    } else {                                        
+                                        skillDmg[i][0] = skillDmg[i][inx];
+                                        dmgCheck.push("DTrue");
+                                        console.log(skillDmg[i][inx]);
+                                        console.log(dmgTypes[i][inx]);
+                                        console.log(dmgCheck.indexOf("DTrue"))
+
+                                        if (Number(inx) === (dmgTypes[i].length - 1)) {
+                                            break;
+                                        } else {
+                                            continue;
+                                        }
+                                        
                                     }
-                                } 
+
+                                    
+                                } else if ((dmgCheck.length > 0 && dmgCheck.indexOf("DTrue") === -1) && (Number(inx) === (dmgTypes[i].length - 1))) {
+                                    console.log('oi')
+                                    skillDmg[i][0] = mockSD;
+                                    
+                                    
+                                } else if (dmgTypes[i].length === 1) {
+                                    skillDmg[i][0] = mockSD;
+                                    
+                                }
 
                             }
                                 
@@ -46,7 +79,7 @@ const Damage = ({escolhido, spellNames, passive, currLvls2, valueDmg}) => {
                     }
                 }
             }
-            console.log(skillDmg)
+            
             setSkillsDMG(skillDmg);            
         }
         if (escolhido !== "") getSkillsDMG();
