@@ -5,9 +5,10 @@ const Skills = () => {
     return (
         <div>
             {sufix.map((letter) => {
-            return (<div key={letter} className="skill">
+            return (
+            <div key={letter} className="skill">
                 <img src="" alt="" id={`img-skill-${letter}`}/>
-                <select name="nivel-Q" id="nivel-Q"></select>
+                <select name={`nivel-${letter}`} id={`nivel-${letter}`}></select>
             </div>)})}
         </div>
     )
