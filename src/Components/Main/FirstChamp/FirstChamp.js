@@ -6,14 +6,14 @@ import Skills from './Skills/Skills'
 import Stats from './Stats/Stats';
 import styles from './FirstChamp.module.css'
 
-const FirstChamp = ({escolhido, spellRanks, spells, onChangeLvl}) => {
+const FirstChamp = ({escolhido, spellRanks, spells, onChangeLvl, onChangeStat}) => {
 
     return (
         <div className={styles.firstC}>
             <ChampPic escolhido={escolhido}/>
             <Runes/>
             <Builds/>
-            <Stats/>           
+            <Stats onChangeStat={onChangeStat}/>           
             <Skills spellRanks={spellRanks} spells={spells} onChangeLvl={onChangeLvl}/>
         </div>
     )

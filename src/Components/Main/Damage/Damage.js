@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Damage.module.css'
 
-const Damage = ({escolhido, spellNames, passive, currLvls2, valueDmg}) => {
+const Damage = ({escolhido, spellNames, passive, currLvls2, valueDmg, baseAA}) => {
     const [skillsDMG, setSkillsDMG] = React.useState([]);
     const [dmgs, setDmgs] = React.useState([]);
 
@@ -49,9 +49,7 @@ const Damage = ({escolhido, spellNames, passive, currLvls2, valueDmg}) => {
                                     } else {                                        
                                         skillDmg[i][0] = skillDmg[i][inx];
                                         dmgCheck.push("DTrue");
-                                        console.log(skillDmg[i][inx]);
-                                        console.log(dmgTypes[i][inx]);
-                                        console.log(dmgCheck.indexOf("DTrue"))
+                                        
 
                                         if (Number(inx) === (dmgTypes[i].length - 1)) {
                                             break;
@@ -63,13 +61,14 @@ const Damage = ({escolhido, spellNames, passive, currLvls2, valueDmg}) => {
 
                                     
                                 } else if ((dmgCheck.length > 0 && dmgCheck.indexOf("DTrue") === -1) && (Number(inx) === (dmgTypes[i].length - 1))) {
-                                    console.log('oi')
                                     skillDmg[i][0] = mockSD;
                                     
                                     
                                 } else if (dmgTypes[i].length === 1) {
                                     skillDmg[i][0] = mockSD;
                                     
+                                } else {
+                                    dmgCheck.push("DFalse")
                                 }
 
                             }
@@ -129,7 +128,7 @@ const Damage = ({escolhido, spellNames, passive, currLvls2, valueDmg}) => {
             </div>
             <div className={styles.dmgRow}>
                 <p>Dano Base</p>
-                <p>AA</p>
+                <p>{baseAA}</p>
                 <p>P</p>
                 {dmgs && dmgs.map((dmg, index) => <p key={index}>{dmg}</p>)}
             </div>

@@ -13,12 +13,19 @@ const Main = () => {
     const [currLvls2, setCurrLvls2] = React.useState([]);
     const [passive, setPassive] = React.useState('');
     const [value2, setValue2] = React.useState(0);
+    const [baseAA, setBaseAA] = React.useState(0);
+    const [lvl, setLvl] = React.useState(1);
 
     React.useEffect(() => {
         async function getSkills() {
             const url = `https://ddragon.leagueoflegends.com/cdn/10.22.1/data/pt_BR/champion/${escolhido}.json`;
             const response = await fetch(url);
             const result = await response.json();
+
+            const currAA = result.data[escolhido].stats.attackdamage + ((Number(lvl) - 1) * result.data[escolhido].stats.attackdamageperlevel)
+            const currAA2 = currAA.toFixed(2);
+            setBaseAA(currAA2);
+            console.log(result.data[escolhido].stats)
             
             const spellList = result.data[escolhido].spells;
             const passive = result.data[escolhido].passive.name;
@@ -67,7 +74,7 @@ const Main = () => {
             
         }
         if (escolhido !== "") getSkills();
-    }, [escolhido]);
+    }, [escolhido, lvl]);
 
 
     function handleChoice(chosen) {
@@ -79,12 +86,16 @@ const Main = () => {
         setValue2(value);
     }
 
+    function onChangeStatLvl(level) {
+        setLvl(level);
+    }
+
     return (
         <main className={styles.main}>
             <ChampSelect onChangeChamp={handleChoice}/>
-            <FirstChamp escolhido={escolhido} spellRanks={spellRanks} spells={spells} onChangeLvl={onChangeLvl}/>
+            <FirstChamp escolhido={escolhido} spellRanks={spellRanks} spells={spells} onChangeLvl={onChangeLvl} onChangeStat={onChangeStatLvl}/>
             <EnemyChamp/>
-            <Damage escolhido={escolhido} spellNames={spellNames} currLvls2={currLvls2} passive={passive} valueDmg={value2}/>            
+            <Damage baseAA={baseAA} escolhido={escolhido} spellNames={spellNames} currLvls2={currLvls2} passive={passive} valueDmg={value2}/>            
         </main>
     )
 }
