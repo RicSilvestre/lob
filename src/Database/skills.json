@@ -8,6 +8,14 @@
     }
   },
   {
+    "Rell": {
+      "dmgType": [],
+      "dmg": [],
+      "dmgAmp": [],
+      "dmgAmpTypes": []
+    }
+  },
+  {
     "Kai'Sa": {
       "dmgType": [
         [
