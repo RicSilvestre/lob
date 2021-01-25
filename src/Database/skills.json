@@ -1,7 +1,13 @@
 [
   {
     "Viego": {
-      "dmgType": [],
+      "dmgType": [
+        [
+          "Bonus Physical Damage",
+          "Minimum Bonus Damage",
+          "Physical Damage"
+        ]
+      ],
       "dmg": [],
       "dmgAmp": [],
       "dmgAmpTypes": []
