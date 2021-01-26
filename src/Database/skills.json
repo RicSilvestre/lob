@@ -15,7 +15,13 @@
   },
   {
     "Rell": {
-      "dmgType": [],
+      "dmgType": [
+        [
+          "Magic Damage",
+          "Secondary Damage",
+          "Heal Per Champion"
+        ]
+      ],
       "dmg": [],
       "dmgAmp": [],
       "dmgAmpTypes": []
